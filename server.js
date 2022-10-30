@@ -1,104 +1,67 @@
-var port = process.env.PORT || 8080;
-var io = require('socket.io')(port);
-var shortId = require('shortid');
-
-var players = [];
-
-var playerSpeed = 3;
-
-console.log("server started on port " + port);
-
-io.on('connection', function (socket) {
-    
-    var thisPlayerId = shortId.generate();
-    var player = {
-        id:thisPlayerId,
-        destination:{
-        x:0,
-        y:0    
-        },
-        lastPosition:{
-            x:0,
-            y:0
-        },
-        lastMoveTime : 0
-    };
-    players[thisPlayerId] = player;
-    
-    console.log("client connected, id = ", thisPlayerId);
-   
-   socket.emit('register', {id:thisPlayerId});
-    socket.broadcast.emit('spawn', {id:thisPlayerId});
-    socket.broadcast.emit('requestPosition');
-    
-    for(var playerId in players){
-        if(playerId == thisPlayerId)
-            continue;
-        socket.emit('spawn', players[playerId]);
-    };
-    
-    
-    socket.on('move', function (data) {
-        data.id = thisPlayerId;
-        console.log('client moved', JSON.stringify(data));
-        
-        player.destination.x = data.d.x;
-        player.destination.y = data.d.y;
-        
-        var elapsedTime = Date.now() - player.lastMoveTime;
-        
-        var travelDistanceLimit = elapsedTime * playerSpeed / 1000;
-        
-        var requestedDistanceTraveled = lineDistance(player.lastPosition, data.c);
-        
-        player.lastMoveTime = Date.now();
-        
-        player.lastPosition = data.c;
-        
-        delete data.c;
-        
-        data.x = data.d.x;
-        data.y = data.d.y;
-        
-        delete data.d;
-        
-        socket.broadcast.emit('move', data);
-    });
-    
-     socket.on('follow', function (data) {
-        data.id = thisPlayerId;
-        console.log("follow request: ", data);
-        socket.broadcast.emit('follow', data);
-    });
-    
-    socket.on('updatePosition', function (data) {
-        console.log("update position: ", data);
-        data.id = thisPlayerId;
-        socket.broadcast.emit('updatePosition', data);
-    });
-    
-    socket.on('attack', function (data) {
-        console.log("attack request: ", data);
-        data.id = thisPlayerId;
-        io.emit('attack', data);
-    });
-    
-    socket.on('disconnect', function () {
-        console.log('client disconected');
-        delete players[thisPlayerId];
-        socket.broadcast.emit('disconnected', {id:thisPlayerId});
-    });
+const io = require('socket.io')(8123, { //8123 is the local port we are binding the demo server to
+  pingInterval: 30005,		//An interval how often a ping is sent
+  pingTimeout: 5000,		//The time a client has to respont to a ping before it is desired dead
+  upgradeTimeout: 3000,		//The time a client has to fullfill the upgrade
+  allowUpgrades: true,		//Allows upgrading Long-Polling to websockets. This is strongly recommended for connecting for WebGL builds or other browserbased stuff and true is the default.
+  cookie: false,			//We do not need a persistence cookie for the demo - If you are using a load balöance, you might need it.
+  serveClient: true,		//This is not required for communication with our asset but we enable it for a web based testing tool. You can leave it enabled for example to connect your webbased service to the same server (this hosts a js file).
+  allowEIO3: false,			//This is only for testing purpose. We do make sure, that we do not accidentially work with compat mode.
+  cors: {
+    origin: "*"				//Allow connection from any referrer (most likely this is what you will want for game clients - for WebGL the domain of your sebsite MIGHT also work)
+  }
 });
 
-function lineDistance(vectorA, vectorB) {
-    var xs = 0;
-    var ys = 0;
-    
-    xs = vectorB.x - vectorA.x;
-    xs = xs * xs;
-    
-    ys = vectorB.y - vectorA.y;
-    ys = ys * ys;
-    
-    return Math.sqrt(xs + ys);
-}
+
+//This funciton is needed to let some time pass by between conversation and closing. This is only for demo purpose.
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}  
+
+// App Code starts here
+
+console.log('Starting Socket.IO demo server');
+
+io.on('connection', (socket) => {
+	console.log('[' + (new Date()).toUTCString() + '] game connecting');
+	
+    socket.on('KnockKnock', (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] game knocking... Answering "Who\'s there?"...');
+        socket.emit('WhosThere');
+    });
+
+    socket.on('ItsMe', async (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] received game introduction. Welcoming the guest...');
+        socket.emit('Welcome', 'Hi customer using unity' + data.version + ', this is the backend microservice. Thanks for buying our asset. (No data is stored on our server)');
+        socket.emit('TechData', {
+			podName: 'Local Test-Server',
+			timestamp: (new Date()).toUTCString()
+		});
+    });
+	
+	socket.on('SendNumbers', async (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] Client is asking for random number array');
+		socket.emit('RandomNumbers', [ Math.ceil((Math.random() * 100)), Math.ceil((Math.random() * 100)), Math.ceil((Math.random() * 100)) ]);
+	});
+	
+	socket.on('Goodbye', async (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] Client said "' + data + '" - The server will disconnect the client in five seconds. You can now abort the process (and restart it afterwards) to see an auto reconnect attempt.');
+		await sleep(5000); //This is only for demo purpose.
+		socket.disconnect(true);
+	});
+
+	socket.on('disconnect', (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] Bye, client ' + socket.id);
+	});
+
+
+	
+	socket.on('PING', async (data) => {
+		console.log('[' + (new Date()).toUTCString() + '] incoming PING #' + data + ' from ' + socket.id + ' answering PONG with some jitter...');
+		await sleep(Math.random() * 2000);
+        socket.emit('PONG', data);
+    });
+	
+});
+
