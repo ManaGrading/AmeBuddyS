@@ -44,7 +44,7 @@ io.on('connection', function(socket){
             
     //       }//END_IF
      
-       });//end_forEach
+    //   });//end_forEach
       
        // spawn currentUser client on clients in broadcast
      
