@@ -29,7 +29,7 @@ io.on('connection', function (socket) {
 	socket.on('OnBroadCastToAll', function (_data) {
 		clients.forEach(function (i) {
 			//send to the client.js script
-			socket.emit('Broadcast', currentUser.name + " " + _data);
+			socket.emit('Broadcast', currentUser.name + " " + _data + " " + clients.length.toString());
 		});//end_forEach
 	});
 
