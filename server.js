@@ -26,14 +26,20 @@ io.on('connection', function(socket){
   //to store current client connection
   var currentUser;
 	
-  socket.on('MATT', function (_data)
+  socket.on('OnRegisterClient', function (_data)
   {
   
       console.log(_data);
-      
+      currentUser = {
+		id:socket.id,//alternatively we could use socket.id
+		name:_data,
+		socketID:socket.id,//fills out with the id of the socket that was open
+		};//new user  in clients list
+
+		clients.push(currentUser);
 
       //send to the client.js script
-      socket.emit("MATTT","Yo bois");
+      socket.emit("OnClientRegistered","Yo bois");
       
        //spawn all connected clients for currentUser client 
     //    clients.forEach( function(i) {
