@@ -54,10 +54,10 @@ io.on('connection', function (socket) {
 		//send to the client.js script
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
 
-		clients.forEach(function (i) 
-		{
-			sockets[i.id].emit('Broadcast', msg);
-		});
+		clients.forEach(function (i) {
+			//send to the client.js script
+			socket.emit('Broadcast', currentUser.name + " " + _data.toString() + " " + clients.length.toString());
+		});//end_forEach
 
 		//OnSendToAll("User has joined.");
 	});//END_SOCKET_ON
