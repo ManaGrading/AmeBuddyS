@@ -39,7 +39,7 @@ io.on('connection', function(socket){
 		clients.push(currentUser);
 
       //send to the client.js script
-      socket.emit("OnClientRegistered","Yo bois");
+      socket.emit("OnClientRegistered","There is: " + clients.length.toString() + " users");
       
        //spawn all connected clients for currentUser client 
     //    clients.forEach( function(i) {
