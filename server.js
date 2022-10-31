@@ -48,20 +48,21 @@ io.on('connection', function (socket) {
 
 		console.log(_data);
 		currentUser = {
-			id: socket.id,//alternatively we could use socket.id
-			name: _data,
+			id:socket.id,//alternatively we could use socket.id
+			name: _data.toString(),
 			socketID: socket.id,//fills out with the id of the socket that was open
 		};//new user  in clients list
 
+		sockets[currentUser.id] = socket;
 		clients.push(currentUser);
-
+		clientLookup[currentUser.id] = currentUser;
 		//send to the client.js script
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
 
 		if(currentUser) {
 		clients.forEach(function (i) {
 			//send to the client.js script
-			socket.emit('Broadcast', "User " + _data + " has joined.");
+			socket.emit('Broadcast', "User " + currentUser.name + " has joined.");
 		});//end_forEach
 	}
 		//OnSendToAll("User has joined.");
