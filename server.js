@@ -26,7 +26,31 @@ io.on('connection', function(socket){
   //to store current client connection
   var currentUser;
 	
-	
+  socket.on('MATT', function (_data)
+  {
+  
+      console.log(_data);
+      
+
+      //send to the client.js script
+      socket.emit("MATTT","Yo bois");
+      
+       //spawn all connected clients for currentUser client 
+    //    clients.forEach( function(i) {
+    //       if(i.id!=currentUser.id)
+    //       { 
+    //         //send to the client.js script
+    //         socket.emit('SPAWN_PLAYER',i.id,i.name,i.position,i.avatar);
+            
+    //       }//END_IF
+     
+       });//end_forEach
+      
+       // spawn currentUser client on clients in broadcast
+     
+      
+
+  });//END_SOCKET_ON
 	
 	//create a callback fuction to listening EmitJoin() method in NetworkMannager.cs unity script
 	socket.on('JOIN', function (_data)
