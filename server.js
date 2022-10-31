@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
 
 		//send to the client.js script
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
-		//OnSendToAll("User: " + _data + " has joined.");
+		OnSendToAll("User has joined.");
 	});//END_SOCKET_ON
 
 	//create a callback fuction to listening EmitJoin() method in NetworkMannager.cs unity script
