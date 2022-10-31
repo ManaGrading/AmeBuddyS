@@ -16,13 +16,13 @@ var clients = [];// to storage clients
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 
-function OnSendToAll(msg) {
+// function OnSendToAll(msg) {
 
-	clients.forEach(function (i) 
-	{
-		sockets[i.id].emit('Broadcast', msg);
-	});
-}
+// 	clients.forEach(function (i) 
+// 	{
+// 		sockets[i.id].emit('Broadcast', msg);
+// 	});
+// }
 
 //open a connection with the specific client
 io.on('connection', function (socket) {
@@ -53,7 +53,13 @@ io.on('connection', function (socket) {
 
 		//send to the client.js script
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
-		OnSendToAll("User has joined.");
+
+		clients.forEach(function (i) 
+		{
+			sockets[i.id].emit('Broadcast', msg);
+		});
+
+		//OnSendToAll("User has joined.");
 	});//END_SOCKET_ON
 
 	//create a callback fuction to listening EmitJoin() method in NetworkMannager.cs unity script
