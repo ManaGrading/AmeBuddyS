@@ -46,8 +46,8 @@ io.on('connection', function (socket) {
 
 	socket.on('OnUpdateMousePos', function (_data) 
 	{
-		console.log(_data);
-		socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
+
+		socket.broadcast.emit('OnSetPlayerMousePos', _data, currentUser.id);
 
 	});//END_SOCKET_ON
 
