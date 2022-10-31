@@ -66,7 +66,7 @@ io.on('connection', function (socket) {
 		clients.push(currentUser);
 		clientLookup[currentUser.id] = currentUser;
 		//send to the client.js script
-		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
+		socket.emit("OnClientRegistered", "Registered");
 
 		//socket.broadcast.emit('Broadcast', "ALT BROAD");
 		socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
