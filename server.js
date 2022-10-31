@@ -59,7 +59,7 @@ io.on('connection', function (socket) {
 		//send to the client.js script
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
 
-		socket.broadcast.emit('Broadcast', "ALT BROAD");
+		//socket.broadcast.emit('Broadcast', "ALT BROAD");
 		socket.broadcast.emit('Broadcast', "User " + currentUser.name + " has joined.");
 
 	// 	if(currentUser) {
