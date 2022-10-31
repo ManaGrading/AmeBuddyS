@@ -60,7 +60,7 @@ io.on('connection', function (socket) {
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
 
 		//socket.broadcast.emit('Broadcast', "ALT BROAD");
-		socket.broadcast.emit('Broadcast', _data, currentUser.id);
+		socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
 
 	// 	if(currentUser) {
 		// clients.forEach(function (i) {
