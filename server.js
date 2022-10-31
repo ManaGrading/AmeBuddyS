@@ -46,8 +46,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnUpdateMousePos', function (_data) 
 	{
-
-
+		console.log(_data);
 		socket.broadcast.emit('OnSetPlayerMousePos', currentUser.id, _data);
 
 	});//END_SOCKET_ON
