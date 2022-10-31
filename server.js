@@ -29,7 +29,7 @@ io.on('connection', function (socket) {
 	socket.on('OnBroadCastToAll', function (_data) {
 		clients.forEach(function (i) {
 			//send to the client.js script
-			socket.emit('Broadcast', _data);
+			socket.emit('Broadcast', currentUser.name + " " + _data);
 		});//end_forEach
 	});
 
@@ -46,21 +46,6 @@ io.on('connection', function (socket) {
 
 		//send to the client.js script
 		socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
-
-		//spawn all connected clients for currentUser client 
-		//    clients.forEach( function(i) {
-		//       if(i.id!=currentUser.id)
-		//       { 
-		//         //send to the client.js script
-		//         socket.emit('SPAWN_PLAYER',i.id,i.name,i.position,i.avatar);
-
-		//       }//END_IF
-
-		//   });//end_forEach
-
-		// spawn currentUser client on clients in broadcast
-
-
 
 	});//END_SOCKET_ON
 
