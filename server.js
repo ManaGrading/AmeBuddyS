@@ -56,7 +56,7 @@ io.on('connection', function (socket) {
 
 		clients.forEach(function (i) {
 			//send to the client.js script
-			socket.emit('Broadcast', currentUser.name + " " + _data.toString() + " " + clients.length.toString());
+			socket.emit('Broadcast', "User " + _data + " has joined.");
 		});//end_forEach
 
 		//OnSendToAll("User has joined.");
