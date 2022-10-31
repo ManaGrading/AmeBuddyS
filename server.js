@@ -63,10 +63,10 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('Broadcast', "User " + currentUser.name + " has joined.");
 
 	// 	if(currentUser) {
-	// 	clients.forEach(function (i) {
-	// 		//send to the client.js script
-	// 		socket.emit('Broadcast', "User " + currentUser.name + " has joined.");
-	// 	});//end_forEach
+		clients.forEach(function (i) {
+			//send to the client.js script
+			socket.emit('Broadcast', "User " + currentUser.name + " has joined.");
+		});//end_forEach
 	// }
 		//OnSendToAll("User has joined.");
 	});//END_SOCKET_ON
