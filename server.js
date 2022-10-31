@@ -60,13 +60,13 @@ io.on('connection', function (socket) {
 		//socket.emit("OnClientRegistered", "There is: " + clients.length.toString() + " users");
 
 		//socket.broadcast.emit('Broadcast', "ALT BROAD");
-		socket.broadcast.emit('Broadcast', "User " + currentUser.name + " has joined.");
+		socket.broadcast.emit('Broadcast', _data, currentUser.id);
 
 	// 	if(currentUser) {
-		clients.forEach(function (i) {
-			//send to the client.js script
-			socket.emit('Broadcast', "User " + currentUser.name + " has joined.");
-		});//end_forEach
+		// clients.forEach(function (i) {
+		// 	//send to the client.js script
+		// 	socket.emit('Broadcast', "User " + currentUser.name + " has joined.");
+		// });//end_forEach
 	// }
 		//OnSendToAll("User has joined.");
 	});//END_SOCKET_ON
