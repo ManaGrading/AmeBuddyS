@@ -34,6 +34,10 @@ io.on('connection', function (socket) {
 	var currentUser;
 
 	socket.on('OnBroadCastToAll', function (_data) {
+
+		socket.broadcast.emit('Broadcast', "ALT BROAD");
+
+
 		clients.forEach(function (i) {
 			//send to the client.js script
 			socket.emit('Broadcast', currentUser.name + " " + _data.toString() + " " + clients.length.toString());
