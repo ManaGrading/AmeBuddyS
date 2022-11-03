@@ -59,7 +59,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
-		var f = '1';
+		var f = "1";
 		socket.emit("OnSendJsonGlobal", f, _data);
 		socket.broadcast.emit('OnSendJsonGlobal', f, _data);
 
