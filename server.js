@@ -61,7 +61,7 @@ io.on('connection', function (socket) {
 	{
 		var f = "1";
 		socket.emit("OnSendJsonGlobal", _data);
-		socket.broadcast.emit('OnSendJsonGlobal', f, _data);
+		socket.broadcast.emit('OnSendJsonGlobal', _data);
 
 	});//END_SOCKET_ON
 
