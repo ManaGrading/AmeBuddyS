@@ -50,6 +50,12 @@ io.on('connection', function (socket) {
 
 	});//END_SOCKET_ON
 
+	socket.on('OnBroadCastJsonToAll', function (_data) 
+	{
+		socket.broadcast.emit('OnSendJsonGlobal', _data);
+
+	});//END_SOCKET_ON
+
 
 	socket.on('OnRegisterClient', function (_data) {
 
