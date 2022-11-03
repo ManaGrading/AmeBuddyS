@@ -59,9 +59,9 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
-		var f = 'testo';
-		socket.emit("OnSendJsonGlobal", _data, f);
-		socket.broadcast.emit('OnSendJsonGlobal', _data, f);
+		var f = '1';
+		socket.emit("OnSendJsonGlobal", f, _data);
+		socket.broadcast.emit('OnSendJsonGlobal', f, _data);
 
 	});//END_SOCKET_ON
 
