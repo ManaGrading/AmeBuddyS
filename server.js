@@ -52,6 +52,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAll', function (_data) 
 	{
+		console.log(_data);
 		socket.broadcast.emit('OnSendJsonGlobal', _data);
 
 	});//END_SOCKET_ON
