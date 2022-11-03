@@ -65,7 +65,6 @@ io.on('connection', function (socket) {
 
 	});//END_SOCKET_ON
 
-
 	socket.on('OnRegisterClient', function (_data) {
 
 		console.log(_data);
