@@ -16,6 +16,8 @@ var clients = [];// to storage clients
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 
+var currentLesson;
+
 // function OnSendToAll(msg) {
 
 // 	clients.forEach(function (i) 
@@ -64,6 +66,20 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('OnSendJsonGlobal', _data);
 
 	});//END_SOCKET_ON
+
+
+
+//Lesson
+socket.on('OnSetLessonID', function (_data) 
+	{
+		currentLesson = _data;
+		socket.emit("OnSetLessonID", _data);
+		socket.broadcast.emit('OnSetLessonID', _data);
+
+	});//END_SOCKET_ON
+
+///End lesson
+
 
 	socket.on('OnRegisterClient', function (_data) {
 
