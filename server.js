@@ -68,7 +68,7 @@ console.log(_data);
 
 		// fills out with the information emitted by the player in the unity
 		var WordInfo = {
-			msgID: data.msgID,//alternatively we could use socket.id
+			msgID: Root.msgID,//alternatively we could use socket.id
 			english: data.word.english,
 			Kanji: data.word.Kanji,
 			Hiragana: data.word.Hiragana
