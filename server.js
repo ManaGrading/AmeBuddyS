@@ -65,10 +65,9 @@ io.on('connection', function (socket) {
 console.log(_data);
 
 		var data = JSON.parse(_data);
-
+//msgID: Root.msgID,
 		// fills out with the information emitted by the player in the unity
 		var WordInfo = {
-			msgID: Root.msgID,//alternatively we could use socket.id
 			english: data.word.english,
 			Kanji: data.word.Kanji,
 			Hiragana: data.word.Hiragana
