@@ -14,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
 
 var clients = [];// to storage clients
 var words = [];
+var screenWords = [];
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 
@@ -71,13 +72,25 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllWords', function (_data) 
 	{
-		console.log(words.length);
 		for(let i = 0; i < words.length; i++) 
 		{
 			socket.emit("OnGetAllWords", words[i]);
 		}
 	});
 
+	socket.on('OnGetAllScreenWords', function (_data) 
+	{
+		for(let i = 0; i < screenWords.length; i++) 
+		{
+			socket.emit("OnGetAllScreenWords", words[i]);
+		}
+	});
+
+	socket.on('OnClearScreenWords', function (_data) 
+	{
+		screenWords = [];
+		socket.emit("OnClearScreenWords", words[i]);
+	});
 
 	socket.on('OnRegisterClient', function (_data) {
 
