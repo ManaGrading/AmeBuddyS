@@ -13,6 +13,7 @@ app.use("/public/Build", express.static(__dirname + "/public/Build"));
 app.use(express.static(__dirname + '/public'));
 
 var clients = [];// to storage clients
+var words = [];
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 
@@ -61,7 +62,19 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
-		var f = "1";
+		var data = JSON.parse(_data);
+
+		// fills out with the information emitted by the player in the unity
+		var WordInfo = {
+			msgID: data.msgID,//alternatively we could use socket.id
+			english: data.word.english,
+			Kanji: data.word.Kanji,
+			Hiragana: data.word.Hiragana,
+		};
+		words.push(WordInfo);
+
+		console.log(WordInfo.msgID);
+
 		socket.emit("OnSendJsonGlobal", _data);
 		socket.broadcast.emit('OnSendJsonGlobal', _data);
 
