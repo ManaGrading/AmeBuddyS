@@ -68,19 +68,6 @@ io.on('connection', function (socket) {
 	});//END_SOCKET_ON
 
 
-
-//Lesson
-socket.on('OnSetLessonID', function (_data) 
-	{
-		currentLesson = _data;
-		socket.emit("OnSetLessonID", _data);
-		socket.broadcast.emit('OnSetLessonID', _data);
-
-	});//END_SOCKET_ON
-
-///End lesson
-
-
 	socket.on('OnRegisterClient', function (_data) {
 
 		console.log(_data);
