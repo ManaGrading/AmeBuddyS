@@ -67,14 +67,14 @@ console.log(_data);
 		var data = JSON.parse(_data);
 //msgID: Root.msgID,
 		// fills out with the information emitted by the player in the unity
-		var WordInfo = {
+		var word = {
 			english: data.word.english,
 			Kanji: data.word.Kanji,
 			Hiragana: data.word.Hiragana
 		};
-		words.push(WordInfo);
+		words.push(word);
 
-		console.log(WordInfo.msgID);
+		console.log(word.msgID);
 
 		socket.emit("OnSendJsonGlobal", _data);
 		socket.broadcast.emit('OnSendJsonGlobal', _data);
