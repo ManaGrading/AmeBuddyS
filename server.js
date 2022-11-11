@@ -62,6 +62,8 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
+console.log(_data);
+
 		var data = JSON.parse(_data);
 
 		// fills out with the information emitted by the player in the unity
