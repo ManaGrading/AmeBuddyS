@@ -62,24 +62,20 @@ io.on('connection', function (socket) {
 
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
-console.log(_data);
-
-		var data = JSON.parse(_data);
-//msgID: Root.msgID,
-		// fills out with the information emitted by the player in the unity
-		var word = {
-			english: data.english,
-			Kanji: data.Kanji,
-			Hiragana: data.Hiragana
-		};
-		words.push(word);
-
-		console.log(word.msgID);
-
+		words.push(_data);
+        
 		socket.emit("OnSendJsonGlobal", _data);
 		socket.broadcast.emit('OnSendJsonGlobal', _data);
 
 	});//END_SOCKET_ON
+
+	socket.on('OnGetAllWords', function (_data) 
+	{
+		for(let i = 0; i < words.length; i++) 
+		{
+			socket.emit("OnGetAllWords", words[i]);
+		}
+	});
 
 
 	socket.on('OnRegisterClient', function (_data) {
