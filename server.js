@@ -68,9 +68,9 @@ console.log(_data);
 //msgID: Root.msgID,
 		// fills out with the information emitted by the player in the unity
 		var word = {
-			english: data.word.english,
-			Kanji: data.word.Kanji,
-			Hiragana: data.word.Hiragana
+			english: data.english,
+			Kanji: data.Kanji,
+			Hiragana: data.Hiragana
 		};
 		words.push(word);
 
