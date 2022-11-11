@@ -69,7 +69,7 @@ io.on('connection', function (socket) {
 			msgID: data.msgID,//alternatively we could use socket.id
 			english: data.word.english,
 			Kanji: data.word.Kanji,
-			Hiragana: data.word.Hiragana,
+			Hiragana: data.word.Hiragana
 		};
 		words.push(WordInfo);
 
