@@ -18,6 +18,7 @@ var screenWords = [];
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 
+
 var currentLesson;
 
 // function OnSendToAll(msg) {
