@@ -123,7 +123,7 @@ io.on('connection', function (socket) {
 
 		subjects.pop(subject);
 		socket.emit("OnClearSubject", subject);
-	
+		socket.broadcast.emit("OnClearSubject", subject);
 	});
 
 	socket.on('OnRegisterClient', function (_data) {
