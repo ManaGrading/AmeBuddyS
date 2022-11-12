@@ -29,7 +29,7 @@ var currentLesson;
 
 //open a connection with the specific client
 io.on('connection', function (socket) {
-
+console.log("action");
 	//print a log in node.js command prompt
 	console.log('A user ready for connection!');
 
