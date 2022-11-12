@@ -89,7 +89,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnClearScreenWords', function (_data) 
 	{
-		screenWords = [];
+		//screenWords = [];
 		socket.emit("OnClearScreenWords2", "-");
 	});
 
