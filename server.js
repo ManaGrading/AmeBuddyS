@@ -17,7 +17,7 @@ var words = [];
 var screenWords = [];
 var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
-
+var subjects = [];
 
 var currentLesson;
 
@@ -101,6 +101,14 @@ io.on('connection', function (socket) {
 		screenWords = [];
 		socket.emit("OnClearScreenWords2", "-");
 	});
+
+
+	socket.on('	OnAddNewSubject', function (_data) 
+	{
+		subjects.push(_data);
+		socket.emit("OnAddNewSubject",_data);
+	});
+
 
 	socket.on('OnRegisterClient', function (_data) {
 
