@@ -37,7 +37,20 @@ io.on('connection', function (socket) {
 	var currentUser;
 
     socket.on('899318', function (_data) {
+        console.log("Server authenticated");
         serverSocket = currentUser;	
+        console.log(serverSocket.toString());
+	});
+
+    
+    socket.on('NetMsgToServer', function (_data) {
+        //send this to server.
+		serverSocket.emit('NetMsgToServer', "ALT BROAD");
+	});
+
+    socket.on('NetMsgFromServer', function (_data) {
+        //send this to server.
+		
 	});
 
 	socket.on('OnBroadCastToAll', function (_data) {
