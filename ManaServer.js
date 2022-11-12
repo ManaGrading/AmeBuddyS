@@ -53,12 +53,7 @@ io.on('connection', function (socket) {
        
 	});
     socket.on('NetMsgFromServer', function (_data) {
-        //send this to server to single client.
-        console.log(_data.userID);
-         console.log(_data);
-     //   var data = JSON.parse(_data);
-
-		//console.log(data);
+        dictClients[_data.userID].emit('NetMsgFromServer', _data);
 	});
     if(serverSocket == null) return;
       
