@@ -62,6 +62,14 @@ io.on('connection', function (socket) {
 
 	});//END_SOCKET_ON
 
+	socket.on('OnAddNewWord', function (_data) 
+	{
+		words.push[_data];
+		screenWords.push[_data];
+		socket.broadcast.emit('OnGetAllWords', _data);		
+		socket.broadcast.emit('OnGetAllScreenWords', _data);
+	});//END_SOCKET_ON
+
 	socket.on('OnBroadCastJsonToAllAndMe', function (_data) 
 	{
 		words.push(_data);
