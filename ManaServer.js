@@ -57,6 +57,7 @@ io.on('connection', function (socket) {
     if(serverSocket == null) return;
       
     socket.on('OnRequestInterface', function (_data) {
+        console.log("User: " + socket.id + " request reg");
         dictClients[socket.id] = socket;
         serverSocket.emit('RegisterClient', socket.id);
 	});
