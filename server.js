@@ -66,9 +66,7 @@ io.on('connection', function (socket) {
 	{
 		socket.emit('OnGetAllWords', _data);		
 		socket.emit('OnGetAllScreenWords', _data);
-		console.log("added word " + _data);
 		words.push(_data);
-		console.log(words.length);
 		screenWords.push(_data);
 		
 	});//END_SOCKET_ON
@@ -84,7 +82,6 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllWords', function (_data) 
 	{
-		console.log("getting words " + words.length.toString());
 		for(let i = 0; i < words.length; i++) 
 		{
 			socket.emit("OnGetAllWords", words[i]);
@@ -93,7 +90,6 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllScreenWords', function (_data) 
 	{
-		console.log("getting on screen " + screenWords.length.toString());
 		for(let i = 0; i < screenWords.length; i++) 
 		{
 			socket.emit("OnGetAllScreenWords", words[i]);
