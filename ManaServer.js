@@ -28,7 +28,7 @@ var currentLesson;
 // }
 
 function SendToServer(_Data) {
-    serverSocket.emit('NetMsgToServer', _data);
+    serverSocket.emit('NetMsgToServer', _Data);
 }
 
 //open a connection with the specific client
