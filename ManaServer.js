@@ -54,6 +54,7 @@ io.on('connection', function (socket) {
        
 	});
 
+    if(serverSocket == null) return;
       
     socket.on('OnRequestInterface', function (_data) {
         dictClients[socket.id] = socket;
