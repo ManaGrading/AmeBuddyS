@@ -68,7 +68,7 @@ io.on('connection', function (socket) {
 
     socket.on('NetMsgFromServer', function (_data) {
         //send this to server to single client.
-
+console.log("resp");
         var data = JSON.parse(_data);
 
 		console.log(data);
