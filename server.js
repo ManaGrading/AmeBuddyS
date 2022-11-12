@@ -120,7 +120,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnStartRoulette', function (_data) 
 	{
-		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
+		var subject = subjects[Math.floor(Math.random() * (subjects.length - 1))];
 		
 		subjects.splice(subjects.indexOf(_data), 1);
 
