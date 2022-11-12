@@ -33,13 +33,13 @@ function SendToServer(_Data) {
 
 //open a connection with the specific client
 io.on('connection', function (socket) {
-console.log("action");
+
 	//print a log in node.js command prompt
 	console.log('A user ready for connection!');
 
 	//to store current client connection
 	var currentUser;
-
+//SERVER
     socket.on('899318', function (_data) {
         if(serverSocket != null) {
             console.log("##########Potential hack detected #################");
@@ -47,7 +47,7 @@ console.log("action");
         }
         console.log("Server authenticated");
         serverSocket = socket;	
-        serverSocket.emit('OnNetworkInitialized', "");
+        serverSocket.emit('OnNetworkInitialized', socket);
        
 	});
 
