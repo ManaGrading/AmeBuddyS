@@ -127,7 +127,8 @@ io.on('connection', function (socket) {
 		{
 			subjects.splice(index, 1);
 		}
-		console.log("There is: " + subject.length + " subects left");
+		
+		console.log("There is: " + subjects.length + " subects left");
 		socket.emit("OnClearSubject", subject);
 		socket.broadcast.emit("OnClearSubject", subject);
 	});
