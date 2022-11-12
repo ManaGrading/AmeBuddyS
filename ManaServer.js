@@ -39,7 +39,7 @@ io.on('connection', function (socket) {
     socket.on('899318', function (_data) {
         console.log("Server authenticated");
         serverSocket = currentUser;	
-        console.log(serverSocket.toString());
+        console.log(serverSocket);
 	});
 
     
