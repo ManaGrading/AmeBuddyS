@@ -45,7 +45,7 @@ io.on('connection', function (socket) {
     
     socket.on('NetMsgToServer', function (_data) {
         //send this to server.
-		serverSocket.emit('NetMsgToServer', "ALT BROAD");
+		serverSocket.emit('NetMsgToServer', _data);
 	});
 
     socket.on('NetMsgFromServer', function (_data) {
