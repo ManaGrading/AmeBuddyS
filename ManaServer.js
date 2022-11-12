@@ -69,6 +69,7 @@ io.on('connection', function (socket) {
 
     socket.on(socket.id.toString(), function (_data) {
         //send this to server to single client.
+        console.log("##############################");
 		console.log(target);
 	});
 
