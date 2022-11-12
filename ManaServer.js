@@ -49,7 +49,6 @@ io.on('connection', function (socket) {
         }
         console.log("Server authenticated");
         serverSocket = socket;	
-        console.log(socket.id);
         serverSocket.emit('OnNetworkInitialized', socket.id);
        
 	});
