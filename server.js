@@ -82,7 +82,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllWords', function (_data) 
 	{
-		socket.emit("test", currentUser);
+		socket.emit("test", currentUser.name);
 		for(let i = 0; i < words.length; i++) 
 		{
 			socket.emit("OnGetAllWords", words[i]);
