@@ -65,7 +65,7 @@ io.on('connection', function (socket) {
 	socket.on('OnAddNewWord', function (_data) 
 	{
 		socket.broadcast.emit('OnGetAllWords', _data);		
-	socket.broadcast.emit('OnGetAllScreenWords', _data);
+		socket.broadcast.emit('OnGetAllScreenWords', _data);
 		console.log("added word");
 		words.push[_data];
 		screenWords.push[_data];
