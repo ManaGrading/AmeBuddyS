@@ -67,9 +67,14 @@ io.on('connection', function (socket) {
 		serverSocket.emit('NetMsgToServer', _data);
 	});
 
+    socket.on(socket.id.toString(), function (_data) {
+        //send this to server to single client.
+		console.log(target);
+	});
+
     socket.on('NetMsgFromServer', function (_data) {
-        //send this to server.
-		
+        //send this to server to single client.
+		console.log(_data);
 	});
 
 	socket.on('OnBroadCastToAll', function (_data) {
