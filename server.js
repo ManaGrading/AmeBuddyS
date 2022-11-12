@@ -120,7 +120,7 @@ io.on('connection', function (socket) {
 	socket.on('OnStartRoulette', function (_data) 
 	{
 		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
-
+		console.log("Our subject is: " + subject);
 		subjects.pop(subject);
 		socket.emit("OnClearSubject", subject);
 		socket.broadcast.emit("OnClearSubject", subject);
