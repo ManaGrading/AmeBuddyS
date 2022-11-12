@@ -83,7 +83,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllWords', function (_data) 
 	{
-		console.log("getting words " . words.count);
+		console.log("getting words " . words.length);
 		for(let i = 0; i < words.length; i++) 
 		{
 			socket.emit("OnGetAllWords", words[i]);
