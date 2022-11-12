@@ -27,9 +27,8 @@ var currentLesson;
 // 	});
 // }
 
-function SendToServer() {
-    serverSocket.emit('NetMsgToServer', "tes");
-    console.log("send auth");
+function SendToServer(_Data) {
+    serverSocket.emit('NetMsgToServer', _data);
 }
 
 //open a connection with the specific client
@@ -44,11 +43,7 @@ console.log("action");
     socket.on('899318', function (_data) {
         console.log("Server authenticated");
         serverSocket = socket;	
-
-        SendToServer();
-        serverSocket.emit('NetMsgToServer', "tes2");
-        socket.emit('NetMsgToServer', "tes2");
-      //  console.log(serverSocket);
+        SendToServer("Authenticated");
 	});
 
     
