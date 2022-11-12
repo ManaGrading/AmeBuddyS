@@ -29,6 +29,7 @@ var currentLesson;
 
 function SendToServer() {
     serverSocket.emit('NetMsgToServer', "tes");
+    console.log("send auth");
 }
 
 //open a connection with the specific client
