@@ -27,7 +27,7 @@ var currentLesson;
 // 	});
 // }
 
-void SendToServer() {
+function SendToServer() {
     serverSocket.emit('NetMsgToServer', "tes");
 }
 
