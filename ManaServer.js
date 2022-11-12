@@ -27,6 +27,10 @@ var currentLesson;
 // 	});
 // }
 
+void SendToServer() {
+    serverSocket.emit('NetMsgToServer', "tes");
+}
+
 //open a connection with the specific client
 io.on('connection', function (socket) {
 console.log("action");
@@ -39,6 +43,10 @@ console.log("action");
     socket.on('899318', function (_data) {
         console.log("Server authenticated");
         serverSocket = currentUser;	
+
+        SendToServer();
+        serverSocket.emit('NetMsgToServer', "tes2");
+        socket.emit('NetMsgToServer', "tes2");
         console.log(serverSocket);
 	});
 
