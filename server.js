@@ -122,12 +122,8 @@ io.on('connection', function (socket) {
 	{
 		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
 		
-		var index = subjects.indexOf(_data);    // <-- Not supported in <IE9
-		if (index !== -1) 
-		{
-			subjects.splice(index, 1);
-		}
-		
+		subjects.splice(subjects.indexOf(_data), 1);
+
 		console.log("There is: " + subjects.length + " subects left");
 		socket.emit("OnClearSubject", subject);
 		socket.broadcast.emit("OnClearSubject", subject);
