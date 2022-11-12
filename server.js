@@ -82,7 +82,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnGetAllWords', function (_data) 
 	{
-		socket.emit("test", currentUser.name);
+		
 		for(let i = 0; i < words.length; i++) 
 		{
 			socket.emit("OnGetAllWords", words[i]);
@@ -138,7 +138,7 @@ io.on('connection', function (socket) {
 			name: _data.toString(),
 			socketID: socket.id,//fills out with the id of the socket that was open
 		};//new user  in clients list
-
+		socket.emit("test", currentUser);
 		sockets[currentUser.id] = socket;
 		clients.push(currentUser);
 		clientLookup[currentUser.id] = currentUser;
