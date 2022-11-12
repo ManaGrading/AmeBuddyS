@@ -103,12 +103,19 @@ io.on('connection', function (socket) {
 	});
 
 
-	socket.on('	OnAddNewSubject', function (_data) 
+	socket.on('OnAddNewSubject', function (_data) 
 	{
 		subjects.push(_data);
 		socket.emit("OnAddNewSubject",_data);
 	});
-
+	
+	socket.on('OnGetAllSubjects', function (_data) 
+	{
+		for(let i = 0; i < subjects.length; i++) 
+		{
+			socket.emit("OnAddNewSubject", subjects[i]);
+		}
+	});
 
 	socket.on('OnRegisterClient', function (_data) {
 
