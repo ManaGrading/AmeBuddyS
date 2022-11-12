@@ -17,6 +17,8 @@ var clientLookup = {};// clients search engine
 var sockets = {};//// to storage sockets
 var serverSocket;
 
+var dictClients = {};
+
 var currentLesson;
 
 // function OnSendToAll(msg) {
@@ -48,10 +50,15 @@ io.on('connection', function (socket) {
         console.log("Server authenticated");
         serverSocket = socket;	
         console.log(socket.id);
-        serverSocket.emit('OnNetworkInitialized', "");
+        serverSocket.emit('OnNetworkInitialized', socket.id);
        
 	});
 
+      
+    socket.on('OnRequestInterface', function (_data) {
+        dictClients[socket.id] = socket;
+        serverSocket.emit('RegisterClient', socket.id);
+	});
     
     socket.on('NetMsgToServer', function (_data) {
         //send this to server.
