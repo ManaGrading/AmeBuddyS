@@ -121,8 +121,12 @@ io.on('connection', function (socket) {
 	socket.on('OnStartRoulette', function (_data) 
 	{
 		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
-		console.log("Our subject is: " + subject);
-		subjects.pop(subject);
+		
+		var index = subjects.indexOf(_data);    // <-- Not supported in <IE9
+		if (index !== -1) 
+		{
+			subjects.splice(index, 1);
+		}
 		console.log("There is: " + subject.length + " subects left");
 		socket.emit("OnClearSubject", subject);
 		socket.broadcast.emit("OnClearSubject", subject);
