@@ -47,7 +47,7 @@ console.log("action");
         SendToServer();
         serverSocket.emit('NetMsgToServer', "tes2");
         socket.emit('NetMsgToServer', "tes2");
-        console.log(serverSocket);
+      //  console.log(serverSocket);
 	});
 
     
