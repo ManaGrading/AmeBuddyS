@@ -89,8 +89,8 @@ io.on('connection', function (socket) {
 
 	socket.on('OnClearScreenWords', function (_data) 
 	{
-	//	screenWords = [];
-		//socket.emit("OnClearScreenWords", words[i]);
+		screenWords = [];
+		socket.emit("OnClearScreenWords", "");
 	});
 
 	socket.on('OnRegisterClient', function (_data) {
