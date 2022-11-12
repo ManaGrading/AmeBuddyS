@@ -52,7 +52,13 @@ io.on('connection', function (socket) {
         serverSocket.emit('OnNetworkInitialized', socket.id);
        
 	});
+    socket.on('NetMsgFromServer', function (_data) {
+        //send this to server to single client.
+         console.log("resp");
+        var data = JSON.parse(_data);
 
+		console.log(data);
+	});
     if(serverSocket == null) return;
       
     socket.on('OnRequestInterface', function (_data) {
@@ -66,13 +72,7 @@ io.on('connection', function (socket) {
 		serverSocket.emit('NetMsgToServer', _data);
 	});
 
-    socket.on('NetMsgFromServer', function (_data) {
-        //send this to server to single client.
-    console.log("resp");
-        var data = JSON.parse(_data);
 
-		console.log(data);
-	});
 
 	socket.on('OnBroadCastToAll', function (_data) {
 
