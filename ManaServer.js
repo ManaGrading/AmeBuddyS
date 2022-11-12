@@ -41,6 +41,10 @@ console.log("action");
 	var currentUser;
 
     socket.on('899318', function (_data) {
+        if(serverSocket != null) {
+            console.log("Potential hack detected from: ");
+            serverSocket.emit("HackThreat", "HACK THREAT - A NEW SERVER ATTEMPTED TO REGISTER");
+        }
         console.log("Server authenticated");
         serverSocket = socket;	
         serverSocket.emit('OnNetworkInitialized', "");
