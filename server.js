@@ -66,8 +66,9 @@ io.on('connection', function (socket) {
 	{
 		socket.emit('OnGetAllWords', _data);		
 		socket.emit('OnGetAllScreenWords', _data);
-		console.log("added word");
+		console.log("added word " + _data);
 		words.push[_data];
+		console.log(words.length);
 		screenWords.push[_data];
 		
 	});//END_SOCKET_ON
