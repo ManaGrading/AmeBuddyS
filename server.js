@@ -105,6 +105,7 @@ io.on('connection', function (socket) {
 
 	socket.on('OnAddNewSubject', function (_data) 
 	{
+		console.log("Added subject: " + _data);
 		subjects.push(_data);
 		socket.emit("OnAddNewSubject",_data);
 	});
@@ -122,6 +123,7 @@ io.on('connection', function (socket) {
 		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
 		console.log("Our subject is: " + subject);
 		subjects.pop(subject);
+		console.log("There is: " + subject.length + " subects left");
 		socket.emit("OnClearSubject", subject);
 		socket.broadcast.emit("OnClearSubject", subject);
 	});
