@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
 		serverSocket.emit('NetMsgToServer', _data);
 	});
 
-    socket.on(socket.id.toString(), function (_data) {
+    socket.on(socket.id, function (_data) {
         //send this to server to single client.
         console.log("##############################");
 		console.log(target);
