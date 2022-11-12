@@ -42,7 +42,7 @@ console.log("action");
 
     socket.on('899318', function (_data) {
         console.log("Server authenticated");
-        serverSocket = currentUser;	
+        serverSocket = socket;	
 
         SendToServer();
         serverSocket.emit('NetMsgToServer', "tes2");
