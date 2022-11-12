@@ -108,13 +108,22 @@ io.on('connection', function (socket) {
 		subjects.push(_data);
 		socket.emit("OnAddNewSubject",_data);
 	});
-	
+
 	socket.on('OnGetAllSubjects', function (_data) 
 	{
 		for(let i = 0; i < subjects.length; i++) 
 		{
 			socket.emit("OnAddNewSubject", subjects[i]);
 		}
+	});
+
+	socket.on('OnStartRoulette', function (_data) 
+	{
+		var subject = subjects[Math.floor(Math.random() * subjects.length - 1)];
+
+		subjects.pop(subject);
+		socket.emit("OnClearSubject", subject);
+	
 	});
 
 	socket.on('OnRegisterClient', function (_data) {
