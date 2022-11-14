@@ -149,6 +149,16 @@ io.on('connection', function (socket) {
 		//socket.broadcast.emit('Broadcast', "ALT BROAD");
 		socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
 
+		//let me know the others.
+		clients.forEach(function (i) {
+			if (i.id != currentUser.id) {
+				//send to the client.js script
+				socket.emit('OnNewClientJoined', id.name, i.id);
+
+			}//END_IF
+
+		});//end_forEach
+
 	// 	if(currentUser) {
 		// clients.forEach(function (i) {
 		// 	//send to the client.js script
