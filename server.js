@@ -153,7 +153,7 @@ io.on('connection', function (socket) {
 		clients.forEach(function (i) {
 			if (i.id != currentUser.id) {
 				//send to the client.js script
-				socket.emit('OnNewClientJoined', id.name, i.id);
+				socket.emit('OnNewClientJoined', i.name, i.id);
 
 			}//END_IF
 
