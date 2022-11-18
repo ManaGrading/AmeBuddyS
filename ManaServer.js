@@ -41,6 +41,17 @@ io.on('connection', function (socket) {
 
 	//to store current client connection
 	var currentUser;
+
+	//reg us
+	currentUser = {
+		id:socket.id,//alternatively we could use socket.id
+		name: _data.toString(),
+		socketID: socket.id,//fills out with the id of the socket that was open
+	};//new user  in clients list
+	sockets[currentUser.id] = socket;
+	clients.push(currentUser);
+	clientLookup[currentUser.id] = currentUser;
+
 //SERVER
     socket.on('899318', function (_data) {
         if(serverSocket != null) {
@@ -50,7 +61,6 @@ io.on('connection', function (socket) {
         console.log("Server authenticated");
         serverSocket = socket;	
         serverSocket.emit('OnNetworkInitialized', socket.id);
-       
 	});
     socket.on('NetMsgFromServer', function (_data) {
 		console.log("doing a");
@@ -88,23 +98,21 @@ io.on('connection', function (socket) {
 		});//end_forEach
 	});
 
-	socket.on('OnRegisterClient', function (_data) {
-
-		console.log(_data);
-		currentUser = {
-			id:socket.id,//alternatively we could use socket.id
-			name: _data.toString(),
-			socketID: socket.id,//fills out with the id of the socket that was open
-		};//new user  in clients list
-		socket.emit("test", currentUser);
-		sockets[currentUser.id] = socket;
-		clients.push(currentUser);
-		clientLookup[currentUser.id] = currentUser;
+	//socket.on('OnRegisterClient', function (_data) {
+		//currentUser = {
+		//	id:socket.id,//alternatively we could use socket.id
+		//	name: _data.toString(),
+		//	socketID: socket.id,//fills out with the id of the socket that was open
+		//};//new user  in clients list
+	//	socket.emit("test", currentUser);
+	//	sockets[currentUser.id] = socket;
+	//	clients.push(currentUser);
+	//	clientLookup[currentUser.id] = currentUser;
 		//send to the client.js script
-		socket.emit("OnClientRegistered", "Registered");
+		//socket.emit("OnClientRegistered", "Registered");
 
 		//socket.broadcast.emit('Broadcast', "ALT BROAD");
-		socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
+		//socket.broadcast.emit('OnNewClientJoined', _data, currentUser.id);
 
 	// 	if(currentUser) {
 		// clients.forEach(function (i) {
@@ -113,7 +121,7 @@ io.on('connection', function (socket) {
 		// });//end_forEach
 	// }
 		//OnSendToAll("User has joined.");
-	});//END_SOCKET_ON
+//	});//END_SOCKET_ON
 
 	//create a callback fuction to listening EmitJoin() method in NetworkMannager.cs unity script
 	socket.on('JOIN', function (_data) {
