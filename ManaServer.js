@@ -45,7 +45,6 @@ io.on('connection', function (socket) {
 	//reg us
 	currentUser = {
 		id:socket.id,//alternatively we could use socket.id
-		name: _data.toString(),
 		socketID: socket.id,//fills out with the id of the socket that was open
 	};//new user  in clients list
 	sockets[currentUser.id] = socket;
