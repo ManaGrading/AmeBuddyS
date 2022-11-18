@@ -53,6 +53,7 @@ io.on('connection', function (socket) {
        
 	});
     socket.on('NetMsgFromServer', function (_data) {
+		console.log("doing a");
         console.log("looking for: "+  _data.userID);
         dictClients[_data.userID].emit('NetMsgFromServer', _data);
 	});
