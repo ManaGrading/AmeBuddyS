@@ -51,7 +51,7 @@ io.on('connection', function (socket) {
 	clients.push(currentUser);
 	clientLookup[currentUser.id] = currentUser;
 	dictClients[socket.id] = socket;
-	
+
 //SERVER
     socket.on('899318', function (_data) {
         if(serverSocket != null) {
@@ -63,8 +63,6 @@ io.on('connection', function (socket) {
         serverSocket.emit('OnNetworkInitialized', socket.id);
 	});
     socket.on('NetMsgFromServer', function (_data) {
-		console.log("doing a");
-        console.log("looking for: "+  _data.userID);
         dictClients[_data.userID].emit('NetMsgFromServer', _data);
 	});
 
