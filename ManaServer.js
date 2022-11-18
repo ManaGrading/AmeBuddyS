@@ -72,6 +72,7 @@ io.on('connection', function (socket) {
     
     socket.on('NetMsgToServer', function (_data) {
         //send this to server.
+		_data.userID = socket.id;
 		serverSocket.emit('NetMsgToServer', _data);
 	});
 
