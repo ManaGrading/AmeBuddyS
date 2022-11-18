@@ -50,7 +50,8 @@ io.on('connection', function (socket) {
 	sockets[currentUser.id] = socket;
 	clients.push(currentUser);
 	clientLookup[currentUser.id] = currentUser;
-
+	dictClients[socket.id] = socket;
+	
 //SERVER
     socket.on('899318', function (_data) {
         if(serverSocket != null) {
