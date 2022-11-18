@@ -56,6 +56,12 @@ io.on('connection', function (socket) {
         console.log("looking for: "+  _data.userID);
         dictClients[_data.userID].emit('NetMsgFromServer', _data);
 	});
+
+    socket.on('NetStringFromServer', function (_data) {
+       
+        dictClients[_data.userID].emit('NetStringFromServer', _data);
+	});
+
     if(serverSocket == null) return;
       
     socket.on('OnRequestInterface', function (_data) {
