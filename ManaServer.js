@@ -85,6 +85,12 @@ io.on('connection', function (socket) {
 		serverSocket.emit('NetMsgToServer', _data);
 	});
 
+	socket.on('NetMsgToServerDragonEye', function (_data) {
+        //send this to server.
+		_data.userID = socket.id;
+		serverSocket.emit('NetMsgToServerDragonEye', _data);
+	});
+
 	socket.on('OnBroadCastToAll', function (_data) {
 
 		socket.broadcast.emit('Broadcast', "ALT BROAD");
