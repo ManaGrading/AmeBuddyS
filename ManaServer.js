@@ -63,6 +63,7 @@ io.on('connection', function (socket) {
         serverSocket.emit('OnNetworkInitialized', socket.id);
 	});
     socket.on('NetMsgFromServer', function (_data) {
+		console.log(_data.toString());
         dictClients[_data.userID].emit('NetMsgFromServer', _data);
 	});
 
