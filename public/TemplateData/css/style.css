@@ -1,125 +1,141 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    font-style: regular;
-    font-family: "Myriad Pro", Myriad,"Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: #FFFFFF;
+body {
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	font-style: regular;
+	font-family: "Myriad Pro", Myriad, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #FFFFFF;
 }
 
-.webgl-content,#loadingBlock,#errorBrowserBlock{
-	padding:0px;
-	position:absolute;
-	height:100vh;
-	width:100vw;
-	background-color:#f0f0f1;
+#loadingBlock {
+	height: 50vh;
+	width: 100vw;
+	padding: 0px;
+	position: absolute;
+	margin: auto;
 }
 
-#gameContainer,canvas{
-	position:absolute;
-	height:100%;
-	width:100%;
-	background-color:#f0f0f1;
+.webgl-content,
+#errorBrowserBlock {
+	padding: 0px;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-color: #f0f0f1;
 }
 
-#fullScreenButton{
-	height:155px;
-	width:155px;
-	position:absolute;
-	z-index:1;
-	bottom:-2px;
-	right:-2px;
-	background-color:black;
-	background-image:url("../img/fullScreen_on.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size:155px 155px;
-	border:none;
-	cursor: pointer;
+#gameContainer,
+canvas {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #f0f0f1;
+	display: flex;
+	align-items: center;
 }
 
-.subtitle{
-    color: #FFFFFF;
-    font-size: 2.3vh;
-    padding-bottom: 2.3vh;
-    padding-top: 2.5vh;
-    display: block;
-    height: 20vh;
-    width: 40vw;
-    margin: auto;
-    text-align: center;
-}
-
-.logo{
-	height:25vh;
-	width:auto;
+.subtitle {
+	color: #FFFFFF;
+	font-size: 2.3vh;
+	font-weight: 700;
+	padding-top: 2.5vh;
+	padding-bottom: 10px;
 	display: block;
-	margin:auto;
-	margin-top:2vh;
-}
-
-#loadingBlock,#errorBrowserBlock{
-	background-image:url("../img/background.jpg");
-	background-size:cover;
-}
-
-#emptyBar{
-	background: url("../img/progressEmpty.png") no-repeat right;
-	float: right; 
-	width: 60%; 
-	height: 100%; 
-	display: inline-block;
-}
-
-#fullBar{
-	background: url("../img/progressFull.png") no-repeat right;
-	float: left; 
-	width: 40%; 
-	height: 100%; 
-	display: inline-block;
-}
-
-#progressBar,#warningBrowserBlock,#warningMobileBlock,#errorContent{
-	height:25vh;
-	width:40vw;
-	margin:auto;
+	width: 40vw;
+	margin: auto;
 	text-align: center;
 }
 
-#progressBar{
-    height: 8vh;
-    color: #FFFFFF;
-    font-size: 4vh;
+.welcomeNote {
+	color: #fff;
+	font-weight: 400;
+	font-size: 17px;
+	padding-top: 1vh;
+	display: block;
+	width: 40vw;
+	margin: auto;
+	text-align: center;
 }
 
-#warningBrowserBlock,#warningMobileBlock,#errorContent{
-	margin-top:15vh;
-	color:#666666;
-	font-size:2.3vh;
+.logo {
+	height: 100px !important;
+	width: auto;
+	display: block;
+	margin: auto;
+	margin-block: 0vh;
 }
 
-.browserIcons{
-	display: inline-flex;
-	margin-top:2vh;
+#gameCanvas {
+	background-image: url("../img/loading-bg.jpg");
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
-.browserIcons a{
-	width:150px;
-}
-
-#errorContent{
-	font-size:3vh;
-	margin-top:5vh;
-}
-
-.centered{
+#emptyBar {
+	background: url("../img/progressEmpty.png") no-repeat right;
+	float: right;
+	width: 60%;
 	height: 100%;
-	max-width:770px;
-	margin-left:auto;
-	margin-right:auto;
+	display: inline-block;
+}
+
+#fullBar {
+	background: url("../img/progressFull.png") no-repeat right;
+	float: left;
+	width: 40%;
+	height: 100%;
+	display: inline-block;
+}
+
+#progressBar,
+#warningBrowserBlock,
+#warningMobileBlock,
+#errorContent {
+	height: 25vh;
+	width: 40vw;
+	margin: auto;
+	margin-top: 5vh;
+	text-align: center;
+}
+
+#progressBar {
+	height: 10vh;
+	color: #FFFFFF;
+	font-size: 2vh;
+}
+
+#warningBrowserBlock,
+#warningMobileBlock,
+#errorContent {
+	margin-top: 15vh;
+	color: #666666;
+	font-size: 2.3vh;
+}
+
+.browserIcons {
+	display: inline-flex;
+	margin-top: 2vh;
+}
+
+.browserIcons a {
+	width: 150px;
+}
+
+#errorContent {
+	font-size: 3vh;
+	margin-top: 5vh;
+}
+
+.centered {
+	height: 50%;
+	max-width: 770px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
