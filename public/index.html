@@ -13,7 +13,10 @@
 
 	<div class="keepRatio">
 		<div id="gameContainer" class="unity-desktop webgl-content">
+			<!-- Go Fullscreen button -->
+   	
 			<canvas id="gameCanvas"></canvas>
+			 
 			<div id="loadingBlock">
 				<div class="loader-wrapper">
 				<div class="logo floating"><img
@@ -30,10 +33,7 @@
 				<p class="text">Mana Studio is currently in Beta, you may encounter bugs and
       stability issues.</p>
 	</div>
-    <!-- Go Fullscreen button -->
-    <button id="fullScreenButton" onclick="ToggleFullScreen()" class="fullscreen-btn">
-      <img src="TemplateData/img/fullscreen.png" /> Fullscreen
-    </button>	
+    
 				<div id="warningBrowserBlock" style="display:none;">
 					<div class="warningBrowserText">
 						Your browser may not be compatible with this website. For an
@@ -60,7 +60,9 @@
 					</div>
 				</div>
 			</div>
-
+<button id="fullScreenButton" onclick="ToggleFullScreen()" class="fullscreen-btn">
+      <img src="TemplateData/img/fullscreen.png" /> Fullscreen
+    </button>
 			<div id="errorBrowserBlock" style="display:none;">
 				<img class="logo" src="TemplateData/img/Logo.png"></img>
 				<span class="subtitle"> CATCHPHRASE <br>
