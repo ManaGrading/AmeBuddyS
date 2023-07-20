@@ -25,7 +25,7 @@
 						<path id="path" d="M4 4 L394 4"></path>
 						<path id="loader-line" d="M4 4 L394 4"></path>
 					</svg>
-					<p id="progress-text" class="progress-text">0%</p>
+					<p id="progressText" class="progressText" style="color:white;">0%</p>
 				</div>
 				<p class="text">Mana Studio is currently in Beta, you may encounter bugs and
       stability issues.</p>
@@ -181,6 +181,7 @@
 
 		var container = document.querySelector("#gameContainer");
 		var canvas = document.querySelector("#gameCanvas");
+		var progressText = document.querySelector("#progressText");
 		var loadingBar = document.querySelector("#loader-line");
 		var fullscreenButton = document.querySelector("#fullScreenButton");
 
